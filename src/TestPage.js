@@ -8,7 +8,54 @@ import CardGroup from "react-bootstrap/CardGroup";
 import Button from "react-bootstrap/Button";
 import logo from "./logo.svg";
 
+const cardImg = [
+  "https://wallpapers.com/images/hd/x-men-movie-logan-4rya331hq6qtqaxh.jpg",
+  "https://deadline.com/wp-content/uploads/2022/11/deadpool-ryan-reynolds.jpg?w=500",
+  "https://cdn.marvel.com/content/1x/036dpl_com_cut_dsk_02_0.jpg",
+  "https://i.pinimg.com/originals/50/15/10/5015103ad1e042f6ad84bdb709487f3f.jpg",
+  "https://i.pinimg.com/originals/35/77/d3/3577d32b5fb998cb49fbb8e792006e30.jpg",
+];
+const cardItems = [
+  {
+    cardImage:
+      "https://deadline.com/wp-content/uploads/2022/11/deadpool-ryan-reynolds.jpg?w=500",
+    cardTitle: "Dead Pool1",
+    cardBody: "DeadPool body text",
+    cardFooter: "Deadpool footer text",
+  }, 
+  {
+    cardImage:
+      "https://deadline.com/wp-content/uploads/2022/11/deadpool-ryan-reynolds.jpg?w=500",
+    cardTitle: "Dead Pool2",
+    cardBody: "DeadPool body text",
+    cardFooter: "Deadpool footer text",
+  },
+  {
+    cardImage:
+      "https://deadline.com/wp-content/uploads/2022/11/deadpool-ryan-reynolds.jpg?w=500",
+    cardTitle: "Dead Pool3",
+    cardBody: "DeadPool body text",
+    cardFooter: "Deadpool footer text",
+  }, 
+  {
+    cardImage:
+      "https://deadline.com/wp-content/uploads/2022/11/deadpool-ryan-reynolds.jpg?w=500",
+    cardTitle: "Dead Pool4",
+    cardBody: "DeadPool body text",
+    cardFooter: "Deadpool footer text",
+  },
+  {
+    cardImage:
+      "https://deadline.com/wp-content/uploads/2022/11/deadpool-ryan-reynolds.jpg?w=500",
+    cardTitle: "Dead Pool5",
+    cardBody: "DeadPool body text",
+    cardFooter: "Deadpool footer text",
+  }
+];
 function BasicExample() {
+  const cardalert = (value) => {
+    alert(value.cardTitle)
+  }
   return (
     <div>
       <Navbar expand="lg" className="bg-body-tertiary">
@@ -35,73 +82,97 @@ function BasicExample() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Carousel data-bs-theme="dark" className="d-block w-100 mb-3">
-        <Carousel.Item interval={3000}>
-          <img
-            className="d-block w-100"
-            src="https://res.cloudinary.com/demo/basketball_shot.jpg"
-            alt="First slide"
-          />
-          <Carousel.Caption>
-            <h5>First slide label</h5>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item interval={3000}>
-          <img
-            className="d-block w-100"
-            src="https://res.cloudinary.com/demo/basketball_shot.jpg"
-            alt="Second slide"
-          />
-          <Carousel.Caption>
-            <h5>Second slide label</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item interval={3000}>
-          <img
-            className="d-block w-100"
-            src="https://res.cloudinary.com/demo/basketball_shot.jpg"
-            alt="Third slide"
-          />
-          <Carousel.Caption>
-            <h5>Third slide label</h5>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
       <div>
-        <h2 className="text-start" >List of cards</h2>
-        <CardGroup>
-          <Card style={{ width: "15rem" }} className="mx-3">
-            <Card.Img 
-              variant="top"
+        <Carousel
+          data-bs-theme="dark"
+          className="d-block w-100 mb-3"
+          height="90vh"
+        >
+          <Carousel.Item interval={3000}>
+            <img
+              style={{ height: "90vh" }}
+              className="d-block w-100"
               src="https://res.cloudinary.com/demo/basketball_shot.jpg"
+              alt="First slide"
             />
-          </Card>
-          <Card style={{ width: "15rem" }} className="mx-2">
-            <Card.Img
-              variant="top"
+            <Carousel.Caption>
+              <h5>First slide label</h5>
+              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item interval={3000}>
+            <img
+              style={{ height: "90vh" }}
+              className="d-block w-100"
               src="https://res.cloudinary.com/demo/basketball_shot.jpg"
+              alt="Second slide"
             />
-          </Card>
-          <Card style={{ width: "15rem" }} className="mx-2">
-            <Card.Img
-              variant="top"
+            <Carousel.Caption>
+              <h5>Second slide label</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item interval={3000}>
+            <img
+              style={{ height: "90vh" }}
+              className="d-block w-100"
               src="https://res.cloudinary.com/demo/basketball_shot.jpg"
+              alt="Third slide"
             />
-          </Card>
-          <Card style={{ width: "15rem" }} className="mx-2">
-            <Card.Img
-              variant="top"
-              src="https://res.cloudinary.com/demo/basketball_shot.jpg"
-            />
-          </Card>
+            <Carousel.Caption>
+              <h5>Third slide label</h5>
+              <p>
+                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+              </p>
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
+      </div>
+      <div>
+        <h2 className="text-start m-5">List of cards</h2>
+      </div>
+      {/* --------------------------card-start----------------- */}
+      <div className="m-5">
+        <CardGroup className="d-flex flex-wrap align-content-start justify-content-between">
+          {cardImg.map((card, i) => {
+            return (
+              <Card className="p-3">
+                <Card.Img variant="top" src={card} />
+              </Card>
+            );
+          })}
         </CardGroup>
       </div>
-    </div>  
+      {/* --------------------------card-end----------------- */}
+
+      <div>
+        <h2 className="text-start m-5">List of cards with image and title</h2>
+      </div>
+      {/* --------------------------card-text-start----------------- */}
+      <div className="m-5">
+        <CardGroup >
+          {cardItems.map((card,i) => {
+            return (
+              <Card className="p-3" onClick={() => cardalert(card)}>
+              <Card.Img
+                variant="top"
+                src={card.cardImage}
+              />
+              <Card.Body>
+                <Card.Title>{card.cardTitle}</Card.Title>
+                <Card.Text>
+                  {card.cardBody}
+                </Card.Text>
+              </Card.Body>
+              <Card.Footer>
+                <small className="text-muted">{card.cardFooter}</small>
+              </Card.Footer>
+            </Card>
+            )
+          })}
+        </CardGroup>
+      </div>
+    </div>
   );
 }
 export default BasicExample;
