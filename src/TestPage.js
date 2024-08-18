@@ -7,6 +7,9 @@ import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import Button from "react-bootstrap/Button";
 import logo from "./logo.svg";
+import Practise from "./Components/Practise";
+import { useNavigate, createSearchParams, Link } from "react-router-dom";
+import { useState } from "react";
 
 const cardImg = [
   "https://wallpapers.com/images/hd/x-men-movie-logan-4rya331hq6qtqaxh.jpg",
@@ -22,7 +25,8 @@ const cardItems = [
     cardTitle: "Dead Pool1",
     cardBody: "DeadPool body text",
     cardFooter: "Deadpool footer text",
-  }, 
+    path: "/newpage",
+  },
   {
     cardImage:
       "https://deadline.com/wp-content/uploads/2022/11/deadpool-ryan-reynolds.jpg?w=500",
@@ -36,7 +40,7 @@ const cardItems = [
     cardTitle: "Dead Pool3",
     cardBody: "DeadPool body text",
     cardFooter: "Deadpool footer text",
-  }, 
+  },
   {
     cardImage:
       "https://deadline.com/wp-content/uploads/2022/11/deadpool-ryan-reynolds.jpg?w=500",
@@ -50,12 +54,23 @@ const cardItems = [
     cardTitle: "Dead Pool5",
     cardBody: "DeadPool body text",
     cardFooter: "Deadpool footer text",
-  }
+  },
 ];
 function BasicExample() {
   const cardalert = (value) => {
-    alert(value.cardTitle)
-  }
+    // alert(value.cardTitle);
+  };
+  const navigate = useNavigate();
+
+  const openCardPage = (item) => {
+    navigate({
+      pathname: "/newpage",
+    search: createSearchParams({
+      id: item.cardTitle,
+    }).toString()
+  })
+  };
+
   return (
     <div>
       <Navbar expand="lg" className="bg-body-tertiary">
@@ -150,25 +165,22 @@ function BasicExample() {
       </div>
       {/* --------------------------card-text-start----------------- */}
       <div className="m-5">
-        <CardGroup >
-          {cardItems.map((card,i) => {
+        <CardGroup>
+          {cardItems.map((card, i) => {
             return (
               <Card className="p-3" onClick={() => cardalert(card)}>
-              <Card.Img
-                variant="top"
-                src={card.cardImage}
-              />
-              <Card.Body>
-                <Card.Title>{card.cardTitle}</Card.Title>
-                <Card.Text>
-                  {card.cardBody}
-                </Card.Text>
-              </Card.Body>
-              <Card.Footer>
-                <small className="text-muted">{card.cardFooter}</small>
-              </Card.Footer>
-            </Card>
-            )
+                <Card.Img variant="top" src={card.cardImage} />
+                <Card.Body>
+                  <Card.Title>{card.cardTitle}</Card.Title>
+                  <Card.Text>{card.cardBody}</Card.Text>
+                  <button onClick={() => openCardPage(card)}>Click Me</button>
+                  {/* <a href={card?.path}>Click here</a> */}
+                </Card.Body>
+                <Card.Footer>
+                  <small className="text-muted">{card.cardFooter}</small>
+                </Card.Footer>
+              </Card>
+            );
           })}
         </CardGroup>
       </div>
