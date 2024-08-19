@@ -63,12 +63,11 @@ function BasicExample() {
   const navigate = useNavigate();
 
   const openCardPage = (item) => {
-    navigate({
-      pathname: "/newpage",
-    search: createSearchParams({
-      id: item.cardTitle,
-    }).toString()
-  })
+    navigate("/newpage", {
+      state: {
+        id: item.cardTitle,
+      }
+    })
   };
 
   return (

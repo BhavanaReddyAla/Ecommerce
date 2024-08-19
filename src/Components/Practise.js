@@ -6,10 +6,12 @@ import { useLocation, useSearchParams, useParams } from "react-router-dom";
 import { CardTitle } from "react-bootstrap";
 
 function Practise() {
-  const [searchParams] = useSearchParams();
-  console.log(searchParams.get("id"));
+  // const [searchParams] = useSearchParams();
+  // console.log(searchParams.get("id"));
+  const location = useLocation()
+  console.log(location)
 
-  return <h2> card Title is {searchParams.get("id")} </h2>;
+  return <h2> card Title is {location.state.id} </h2>;
 }
 
 export default Practise;
