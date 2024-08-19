@@ -13,7 +13,7 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "/newpage",
+    path: "/newpage/:id",
     element: <Practise />,
   },
 ]);

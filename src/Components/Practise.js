@@ -8,10 +8,12 @@ import { CardTitle } from "react-bootstrap";
 function Practise() {
   // const [searchParams] = useSearchParams();
   // console.log(searchParams.get("id"));
-  const location = useLocation()
-  console.log(location)
+  // const location = useLocation()
+  // console.log(location)
+  let params = useParams()
+  console.log(params)
 
-  return <h2> card Title is {location.state.id} </h2>;
+  return <h2> card Title is {params.id} </h2>;
 }
 
 export default Practise;

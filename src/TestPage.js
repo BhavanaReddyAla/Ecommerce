@@ -63,11 +63,7 @@ function BasicExample() {
   const navigate = useNavigate();
 
   const openCardPage = (item) => {
-    navigate("/newpage", {
-      state: {
-        id: item.cardTitle,
-      }
-    })
+    navigate(`/newpage/${item.cardTitle}`)
   };
 
   return (
